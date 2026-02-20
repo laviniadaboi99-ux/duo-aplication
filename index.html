@@ -13,13 +13,15 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #0a0a23, #1b003f);
+  background: linear-gradient(rgba(10,10,25,0.85), rgba(10,10,25,0.85)),
+              url("https://i.pinimg.com/originals/82/a2/b3/82a2b3fe5be059370818df13e90eaadb.gif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  overflow: hidden;
-  position: relative;
 }
 
 /* Glowing container */
@@ -166,7 +168,7 @@ button:hover {
   </select>
   <input type="text" id="role" placeholder="Main role 🎮">
   <input type="text" id="discordUser" placeholder="Discord username 💌">
-  <textarea id="promise" placeholder="Convince me you won’t blame jungle 🐰"></textarea>
+  <textarea id="promise" placeholder="Convince me you won’t blame jungle 🐰"></textarea>,
 
   <button onclick="submitApp()">Submit Application 🌟</button>
   <div id="status"></div>
