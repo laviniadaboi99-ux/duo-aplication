@@ -5,123 +5,121 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🌸 Duo Tryouts 🌸</title>
 
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(rgba(10,10,25,0.85), rgba(10,10,25,0.85)),
-              url("https://i.pinimg.com/originals/82/a2/b3/82a2b3fe5be059370818df13e90eaadb.gif");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: linear-gradient(135deg, #ffb6d9, #5a3e85); /* Cute but classy */
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  overflow: hidden;
 }
 
+/* Container redesign */
 .container {
   width: 400px;
-  padding: 30px;
-  border-radius: 20px;
-  background: rgba(20, 20, 40, 0.85);
-  backdrop-filter: blur(12px);
-  border: 2px solid #6a00ff;
-  box-shadow: 0 0 25px #6a00ff, 0 0 50px #00f0ff;
-  animation: glowPulse 2s infinite alternate;
-  color: white;
+  padding: 35px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 182, 217, 0.5);
+  box-shadow: 0 0 20px rgba(255, 182, 217, 0.4);
   text-align: center;
+  color: #fff;
+  animation: subtleGlow 2.5s infinite alternate;
 }
 
-@keyframes glowPulse {
-  from { box-shadow: 0 0 20px #6a00ff, 0 0 30px #00f0ff; }
-  to { box-shadow: 0 0 35px #6a00ff, 0 0 60px #00f0ff; }
+@keyframes subtleGlow {
+  from { box-shadow: 0 0 15px rgba(255, 182, 217, 0.4); }
+  to { box-shadow: 0 0 35px rgba(255, 182, 217, 0.6); }
 }
 
+/* Headings */
 h1 {
+  font-size: 26px;
   margin-bottom: 10px;
-  font-size: 24px;
-  letter-spacing: 1px;
 }
 
 .subtitle {
-  font-size: 13px;
-  opacity: 0.7;
-  margin-bottom: 20px;
+  font-size: 15px;
+  opacity: 0.85;
+  margin-bottom: 25px;
+  font-weight: 500;
 }
 
+/* Inputs and selects */
 input, select, textarea {
   width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 10px;
-  border: 1px solid #6a00ff;
-  background: rgba(30,30,60,0.8);
-  color: white;
-  font-size: 14px;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 14px;
+  border: none;
   outline: none;
-  transition: 0.3s;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+input::placeholder, textarea::placeholder {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 input:focus, select:focus, textarea:focus {
-  border-color: #00f0ff;
-  box-shadow: 0 0 10px #00f0ff;
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 8px rgba(255, 182, 217, 0.7);
 }
 
+/* Textarea */
 textarea {
   resize: none;
-  height: 60px;
+  height: 70px;
 }
 
+/* Buttons */
 button {
   width: 100%;
-  padding: 12px;
-  margin-top: 12px;
-  border-radius: 12px;
+  padding: 14px;
+  margin-top: 15px;
+  border-radius: 16px;
   border: none;
   font-weight: 600;
+  font-size: 16px;
   cursor: pointer;
-  background: linear-gradient(90deg, #6a00ff, #00f0ff);
-  color: white;
-  font-size: 15px;
-  transition: 0.3s;
+  background: linear-gradient(90deg, #ffb6d9, #ff9ad5);
+  color: #fff;
+  transition: all 0.3s ease;
 }
 
 button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 20px #00f0ff;
+  box-shadow: 0 0 20px rgba(255, 182, 217, 0.7);
 }
 
+/* Status text */
 #status {
-  margin-top: 15px;
-  min-height: 25px;
+  margin-top: 18px;
+  min-height: 28px;
   font-weight: bold;
-  font-size: 14px;
-  color: #00f0ff;
+  font-size: 15px;
 }
 </style>
 </head>
 
 <body>
-<!-- Floating sparks -->
-<div class="sparkle" style="top:10%; left:20%; animation-delay: 0s;"></div>
-<div class="sparkle" style="top:30%; left:80%; animation-delay: 0.5s;"></div>
-<div class="sparkle" style="top:70%; left:10%; animation-delay: 1s;"></div>
-<div class="sparkle" style="top:80%; left:60%; animation-delay: 1.2s;"></div>
-
 <div class="container">
-  <!-- Header GIF -->
-  <img src="https://i.imgur.com/4HJbzEq.gif" alt="Vi & Jinx Arcane" class="header-gif">
-
   <h1>🌸 Duo Tryouts 🌸</h1>
-  <div class="subtitle">MMR Police Dept 🧚🏻‍♀️</div>
+  <div class="subtitle">MMR Police Dept 💖</div>
 
-  <input type="text" id="ign" placeholder="In-game name 💻">
+  <input type="text" id="ign" placeholder="Your in-game name 🎮">
+  
   <select id="rank">
     <option value="">Select rank ✨</option>
-    <option>Gold</option>
     <option>Platinum</option>
     <option>Emerald</option>
     <option>Diamond</option>
@@ -129,36 +127,34 @@ button:hover {
     <option>Grand Master</option>
     <option>Challenger</option>
     <option>Sovereign</option>
+    
   </select>
-  <input type="text" id="role" placeholder="Main role 🎮">
+
+  <input type="text" id="role" placeholder="Main role 🛡️">
   <input type="text" id="discordUser" placeholder="Discord username 💌">
-  <textarea id="promise" placeholder="Convince me you won’t blame jungle 🐰"></textarea>,
+  <textarea id="promise" placeholder="Convince me you won’t blame jungle 🐰"></textarea>
 
   <button onclick="submitApp()">Submit Application 🌟</button>
   <div id="status"></div>
 </div>
 
-
 <script>
-const webhookURL = "https://discord.com/api/webhooks/1474247044448124980/Q26L3wUYFp7WaNbyEA8AygWT3tNCubEU4x0iRh4F2dFd0sWg-VHoFS_qwNdwHAElaEJB"
-
+const webhookURL = "https://discord.com/api/webhooks/1474247044448124980/Q26L3wUYFp7WaNbyEA8AygWT3tNCubEU4x0iRh4F2dFd0sWg-VHoFS_qwNdwHAElaEJB";
+/* Accept messages (always approve) */
 const acceptMessages = [
-"function fakeScan(callback){
+"✅ Approved ✨",
+"✅ Hands detected 💖",
+"✅ Wards fully functional 🌸"
+];
+
+/* Fake scanning steps */
+function fakeScan(callback){
   const status = document.getElementById("status");
   const steps = [
     "Scanning CS history 💻...",
     "Checking tilt resistance 😿...",
     "Reviewing ward usage ✨...",
-    "Checking out toxic comments 💖..."
-];
-
-function fakeScan(callback){
-  const status = document.getElementById("status");
-  const steps = [
-    "Scanning CS history...",
-    "Analyzing tilt resistance...",
-    "Syncing with Hexcore...",
-    "Calibrating MMR..."
+    "Checking toxic comments 💖..."
   ];
   let i = 0;
   const interval = setInterval(()=>{
@@ -168,9 +164,10 @@ function fakeScan(callback){
       clearInterval(interval);
       callback();
     }
-  },800);
+  }, 900);
 }
 
+/* Submit application */
 function submitApp(){
   const ign = document.getElementById("ign").value.trim();
   const rank = document.getElementById("rank").value;
@@ -180,7 +177,7 @@ function submitApp(){
   const status = document.getElementById("status");
 
   if(!ign || !rank || !discordUser){
-    status.innerText = "Incomplete application detected.";
+    status.innerText = "❌ Fill the basics, cutie!";
     return;
   }
 
@@ -193,14 +190,14 @@ function submitApp(){
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         embeds:[{
-          title: "New Hextech Application",
-          color: 65433,
+          title: "🌸 New Duo Application 🌸",
+          color: 5763719,
           fields:[
             {name:"IGN", value:ign, inline:true},
             {name:"Rank", value:rank, inline:true},
             {name:"Role", value:role||"Not specified", inline:true},
             {name:"Discord", value:discordUser, inline:false},
-            {name:"Statement", value:promise||"None provided", inline:false},
+            {name:"Jungle Promise", value:promise||"No statement given", inline:false},
             {name:"Result", value:resultMessage, inline:false}
           ]
         }]
@@ -209,6 +206,5 @@ function submitApp(){
   });
 }
 </script>
-
 </body>
 </html>
