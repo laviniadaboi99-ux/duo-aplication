@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MMR Police Duo Tryouts</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, #1a1f3c, #0f0f1a);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  width: 380px;
+  padding: 30px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(0,170,255,0.4);
+  box-shadow: 0 0 20px rgba(0,170,255,0.4);
+  animation: glow 2.5s infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 10px rgba(0,170,255,0.4); }
+  to { box-shadow: 0 0 30px rgba(0,170,255,0.9); }
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.7;
+  margin-bottom: 20px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 9px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+textarea {
+  resize: none;
+  height: 60px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  background: linear-gradient(90deg, #ff4d4d, #ff9900);
+  color: white;
+  transition: 0.3s;
+}
+
+button:hover {
+  box-shadow: 0 0 20px rgba(255,120,0,0.9);
+}
+
+#status {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: bold;
+  min-height: 24px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>🔥 Duo Tryouts 🔥</h1>
+  <div class="subtitle">MMR Police Department</div>
+
+  <input type="text" id="ign" placeholder="In-game name">
+  
+  <select id="rank">
+    <option value="">Select rank (be honest)</option>
+    <option>Iron</option>
+    <option>Bronze</option>
+    <option>Silver</option>
+    <option>Gold</option>
+    <option>Platinum</option>
+    <option>Emerald</option>
+    <option>Diamond</option>
+    <option>Master+</option>
+  </select>
+
+  <input type="text" id="role" placeholder="Main role (not all roles pls)">
+  <input type="text" id="discordUser" placeholder="Discord username (required)">
+  <textarea id="promise" placeholder="Convince me you won’t blame jungle"></textarea>
+
+  <button onclick="submitApp()">Submit Application</button>
+  <div id="status"></div>
+</div>
+
+<script>
+const webhookURL = https://discord.com/api/webhooks/1474226619639136361/d6fRlIz1Cw1Uup3kZUFpoERSQBFlMjf6URSN2MhOP53wHNihUS4S6VMF3DFg37Dc20au;
+
+const denyMessages = [
+"❌ Denied. Go practice CS.",
+"❌ Jungle diff already predicted.",
+"❌ Tilt resistance failed.",
+"❌ Suspicious 'I play all roles' detected.",
+"❌ Wards appear decorative."
+];
+
+const acceptMessages = [
+"✅ Approved by MMR Police.",
+"✅ Hands detected.",
+"✅ Wards confirmed functional.",
+"✅ Jungle safe with this one."
+];
+
+function fakeScan(callback) {
+  const status = document.getElementById("status");
+  const steps = [
+    "Scanning CS history...",
+    "Checking tilt resistance...",
+    "Reviewing ward usage...",
+    "Consulting MMR Police..."
+  ];
+
+  let i = 0;
+  const interval = setInterval(() => {
+    status.innerText = steps[i];
+    i++;
+    if (i >= steps.length) {
+      clearInterval(interval);
+      callback();
+    }
+  }, 900);
+}
+
+function submitApp() {
+  const ign = document.getElementById("ign").value.trim();
+  const rank = document.getElementById("rank").value;
+  const role = document.getElementById("role").value.trim();
+  const discordUser = document.getElementById("discordUser").value.trim();
+  const promise = document.getElementById("promise").value.trim();
+  const status = document.getElementById("status");
+
+  if (!ign || !rank || !discordUser) {
+    status.innerText = "❌ Fill the basics, champ.";
+    return;
+  }
+
+  fakeScan(() => {
+    const accepted = Math.random() < 0.5;
+    const resultMessage = accepted 
+      ? acceptMessages[Math.floor(Math.random()*acceptMessages.length)]
+      : denyMessages[Math.floor(Math.random()*denyMessages.length)];
+
+    status.innerText = resultMessage;
+
+    fetch(webhookURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        embeds: [{
+          title: "🔥 New Duo Application",
+          color: accepted ? 5763719 : 15548997,
+          fields: [
+            { name: "IGN", value: ign, inline: true },
+            { name: "Rank", value: rank, inline: true },
+            { name: "Role", value: role || "Not specified", inline: true },
+            { name: "Discord", value: discordUser, inline: false },
+            { name: "Jungle Promise", value: promise || "No statement given", inline: false },
+            { name: "Result", value: resultMessage, inline: false }
+          ]
+        }]
+      })
+    });
+  });
+}
+</script>
+
+</body>
+</html>
